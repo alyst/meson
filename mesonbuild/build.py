@@ -832,10 +832,8 @@ This will become a hard error in a future Meson release.''')
                     self.link(l)
                 # Those parts that are external.
                 extpart = dependencies.DeclaredExternalDependency('undefined',
-                                                          [],
                                                           dep.compile_args,
-                                                          dep.link_args,
-                                                          [])
+                                                          dep.link_args, [])
                 self.external_deps.append(extpart)
                 # Deps of deps.
                 self.add_deps(dep.ext_deps)

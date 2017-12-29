@@ -1637,13 +1637,13 @@ class Interpreter(InterpreterBase):
             if isinstance(l, dependencies.Dependency):
                 raise InterpreterException('''Entries in "link_with" may only be self-built targets,
 external dependencies (including libraries) must go to "dependencies".''')
-        if len(sources) > 0 or len(libs) > 0 or has_internal_deps:
+        if len(incs) > 0 or len(sources) > 0 or len(libs) > 0 or has_internal_deps:
             # build-time dependency
             dep = dependencies.InternalDependency(version, incs, compile_args,
                                                   link_args, libs, sources, final_deps)
         else:
             # external dependency
-            dep = dependencies.DeclaredExternalDependency(version, incs, compile_args,
+            dep = dependencies.DeclaredExternalDependency(version, compile_args,
                                                           link_args, final_deps)
         return DependencyHolder(dep)
 
